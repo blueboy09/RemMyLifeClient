@@ -21,7 +21,7 @@
                 public static final javax.xml.namespace.QName MY_QNAME = new javax.xml.namespace.QName(
                 "http://service.remmylife.com",
                 "searchByType",
-                "ns2");
+                "ns1");
 
             
 
@@ -30,7 +30,7 @@
                         */
 
                         
-                                    protected com.remmylife.diary.xsd.DiaryType localType ;
+                                    protected java.lang.String localType ;
                                 
                            /*  This tracker boolean wil be used to detect whether the user called the set method
                           *   for this attribute. It will be used to determine whether to include this field
@@ -46,9 +46,9 @@
 
                            /**
                            * Auto generated getter method
-                           * @return com.remmylife.diary.xsd.DiaryType
+                           * @return java.lang.String
                            */
-                           public  com.remmylife.diary.xsd.DiaryType getType(){
+                           public  java.lang.String getType(){
                                return localType;
                            }
 
@@ -58,7 +58,7 @@
                                * Auto generated setter method
                                * @param param Type
                                */
-                               public void setType(com.remmylife.diary.xsd.DiaryType param){
+                               public void setType(java.lang.String param){
                             localTypeTracker = true;
                                    
                                             this.localType=param;
@@ -72,7 +72,7 @@
                         */
 
                         
-                                    protected com.remmylife.diary.xsd.User localSelf ;
+                                    protected javax.activation.DataHandler localSelf ;
                                 
                            /*  This tracker boolean wil be used to detect whether the user called the set method
                           *   for this attribute. It will be used to determine whether to include this field
@@ -88,9 +88,9 @@
 
                            /**
                            * Auto generated getter method
-                           * @return com.remmylife.diary.xsd.User
+                           * @return javax.activation.DataHandler
                            */
-                           public  com.remmylife.diary.xsd.User getSelf(){
+                           public  javax.activation.DataHandler getSelf(){
                                return localSelf;
                            }
 
@@ -100,7 +100,7 @@
                                * Auto generated setter method
                                * @param param Self
                                */
-                               public void setSelf(com.remmylife.diary.xsd.User param){
+                               public void setSelf(javax.activation.DataHandler param){
                             localSelfTracker = true;
                                    
                                             this.localSelf=param;
@@ -213,30 +213,42 @@
                
                    }
                 if (localTypeTracker){
-                                    if (localType==null){
+                                    namespace = "http://service.remmylife.com";
+                                    writeStartElement(null, namespace, "type", xmlWriter);
+                             
 
-                                        writeStartElement(null, "http://service.remmylife.com", "type", xmlWriter);
+                                          if (localType==null){
+                                              // write the nil attribute
+                                              
+                                                     writeAttribute("xsi","http://www.w3.org/2001/XMLSchema-instance","nil","1",xmlWriter);
+                                                  
+                                          }else{
 
-                                       // write the nil attribute
-                                      writeAttribute("xsi","http://www.w3.org/2001/XMLSchema-instance","nil","1",xmlWriter);
-                                      xmlWriter.writeEndElement();
-                                    }else{
-                                     localType.serialize(new javax.xml.namespace.QName("http://service.remmylife.com","type"),
-                                        xmlWriter);
+                                        
+                                                   xmlWriter.writeCharacters(localType);
+                                            
+                                          }
+                                    
+                                   xmlWriter.writeEndElement();
+                             } if (localSelfTracker){
+                                    namespace = "http://service.remmylife.com";
+                                    writeStartElement(null, namespace, "self", xmlWriter);
+                             
+                                        
+                                    if (localSelf!=null)  {
+                                       try {
+                                           org.apache.axiom.util.stax.XMLStreamWriterUtils.writeDataHandler(xmlWriter, localSelf, null, true);
+                                       } catch (java.io.IOException ex) {
+                                           throw new javax.xml.stream.XMLStreamException("Unable to read data handler for self", ex);
+                                       }
+                                    } else {
+                                         
+                                             writeAttribute("xsi","http://www.w3.org/2001/XMLSchema-instance","nil","1",xmlWriter);
+                                         
                                     }
-                                } if (localSelfTracker){
-                                    if (localSelf==null){
-
-                                        writeStartElement(null, "http://service.remmylife.com", "self", xmlWriter);
-
-                                       // write the nil attribute
-                                      writeAttribute("xsi","http://www.w3.org/2001/XMLSchema-instance","nil","1",xmlWriter);
-                                      xmlWriter.writeEndElement();
-                                    }else{
-                                     localSelf.serialize(new javax.xml.namespace.QName("http://service.remmylife.com","self"),
-                                        xmlWriter);
-                                    }
-                                } if (localOwnTracker){
+                                 
+                                   xmlWriter.writeEndElement();
+                             } if (localOwnTracker){
                                     namespace = "http://service.remmylife.com";
                                     writeStartElement(null, namespace, "own", xmlWriter);
                              
@@ -257,7 +269,7 @@
 
         private static java.lang.String generatePrefix(java.lang.String namespace) {
             if(namespace.equals("http://service.remmylife.com")){
-                return "ns2";
+                return "ns1";
             }
             return org.apache.axis2.databinding.utils.BeanUtil.getUniquePrefix();
         }
@@ -435,20 +447,17 @@
                  java.util.ArrayList attribList = new java.util.ArrayList();
 
                  if (localTypeTracker){
-                            elementList.add(new javax.xml.namespace.QName("http://service.remmylife.com",
+                                      elementList.add(new javax.xml.namespace.QName("http://service.remmylife.com",
                                                                       "type"));
-                            
-                            
-                                    elementList.add(localType==null?null:
-                                    localType);
-                                } if (localSelfTracker){
-                            elementList.add(new javax.xml.namespace.QName("http://service.remmylife.com",
-                                                                      "self"));
-                            
-                            
-                                    elementList.add(localSelf==null?null:
-                                    localSelf);
-                                } if (localOwnTracker){
+                                 
+                                         elementList.add(localType==null?null:
+                                         org.apache.axis2.databinding.utils.ConverterUtil.convertToString(localType));
+                                    } if (localSelfTracker){
+                                      elementList.add(new javax.xml.namespace.QName("http://service.remmylife.com",
+                                        "self"));
+                                
+                            elementList.add(localSelf);
+                        } if (localOwnTracker){
                                       elementList.add(new javax.xml.namespace.QName("http://service.remmylife.com",
                                                                       "own"));
                                  
@@ -508,7 +517,7 @@
                             if (!"searchByType".equals(type)){
                                 //find namespace for the prefix
                                 java.lang.String nsUri = reader.getNamespaceContext().getNamespaceURI(nsPrefix);
-                                return (SearchByType)com.remmylife.diary.xsd.ExtensionMapper.getTypeObject(
+                                return (SearchByType)com.remmylife.service.ExtensionMapper.getTypeObject(
                                      nsUri,type,reader);
                               }
                         
@@ -535,19 +544,23 @@
                                 
                                     if (reader.isStartElement() && new javax.xml.namespace.QName("http://service.remmylife.com","type").equals(reader.getName())){
                                 
-                                      nillableValue = reader.getAttributeValue("http://www.w3.org/2001/XMLSchema-instance","nil");
-                                      if ("true".equals(nillableValue) || "1".equals(nillableValue)){
-                                          object.setType(null);
-                                          reader.next();
-                                            
-                                            reader.next();
-                                          
-                                      }else{
+                                       nillableValue = reader.getAttributeValue("http://www.w3.org/2001/XMLSchema-instance","nil");
+                                       if (!"true".equals(nillableValue) && !"1".equals(nillableValue)){
                                     
-                                                object.setType(com.remmylife.diary.xsd.DiaryType.Factory.parse(reader));
-                                              
+
+                                    java.lang.String content = reader.getElementText();
+                                    
+                                              object.setType(
+                                                    org.apache.axis2.databinding.utils.ConverterUtil.convertToString(content));
+                                            
+                                       } else {
+                                           
+                                           
+                                           reader.getElementText(); // throw away text nodes if any.
+                                       }
+                                      
                                         reader.next();
-                                    }
+                                    
                               }  // End of if for expected property start element
                                 
                                     else {
@@ -559,19 +572,18 @@
                                 
                                     if (reader.isStartElement() && new javax.xml.namespace.QName("http://service.remmylife.com","self").equals(reader.getName())){
                                 
-                                      nillableValue = reader.getAttributeValue("http://www.w3.org/2001/XMLSchema-instance","nil");
-                                      if ("true".equals(nillableValue) || "1".equals(nillableValue)){
-                                          object.setSelf(null);
-                                          reader.next();
-                                            
-                                            reader.next();
-                                          
-                                      }else{
+                                        nillableValue = reader.getAttributeValue("http://www.w3.org/2001/XMLSchema-instance","nil");
+                                        if ("true".equals(nillableValue) || "1".equals(nillableValue)){
+                                             object.setSelf(null);
+                                             reader.next();
+                                        } else {
                                     
-                                                object.setSelf(com.remmylife.diary.xsd.User.Factory.parse(reader));
-                                              
+                                            object.setSelf(org.apache.axiom.util.stax.XMLStreamReaderUtils.getDataHandlerFromElement(reader));
+                                    
+                                        }
+                                      
                                         reader.next();
-                                    }
+                                    
                               }  // End of if for expected property start element
                                 
                                     else {

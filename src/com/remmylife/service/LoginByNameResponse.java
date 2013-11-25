@@ -21,7 +21,7 @@
                 public static final javax.xml.namespace.QName MY_QNAME = new javax.xml.namespace.QName(
                 "http://service.remmylife.com",
                 "loginByNameResponse",
-                "ns2");
+                "ns1");
 
             
 
@@ -149,7 +149,7 @@
 
         private static java.lang.String generatePrefix(java.lang.String namespace) {
             if(namespace.equals("http://service.remmylife.com")){
-                return "ns2";
+                return "ns1";
             }
             return org.apache.axis2.databinding.utils.BeanUtil.getUniquePrefix();
         }
@@ -386,7 +386,7 @@
                             if (!"loginByNameResponse".equals(type)){
                                 //find namespace for the prefix
                                 java.lang.String nsUri = reader.getNamespaceContext().getNamespaceURI(nsPrefix);
-                                return (LoginByNameResponse)com.remmylife.diary.xsd.ExtensionMapper.getTypeObject(
+                                return (LoginByNameResponse)com.remmylife.service.ExtensionMapper.getTypeObject(
                                      nsUri,type,reader);
                               }
                         

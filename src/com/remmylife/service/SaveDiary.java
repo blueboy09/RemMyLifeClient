@@ -21,7 +21,7 @@
                 public static final javax.xml.namespace.QName MY_QNAME = new javax.xml.namespace.QName(
                 "http://service.remmylife.com",
                 "saveDiary",
-                "ns2");
+                "ns1");
 
             
 
@@ -30,7 +30,7 @@
                         */
 
                         
-                                    protected com.remmylife.diary.xsd.Diary localDiary ;
+                                    protected javax.activation.DataHandler localDiary ;
                                 
                            /*  This tracker boolean wil be used to detect whether the user called the set method
                           *   for this attribute. It will be used to determine whether to include this field
@@ -46,9 +46,9 @@
 
                            /**
                            * Auto generated getter method
-                           * @return com.remmylife.diary.xsd.Diary
+                           * @return javax.activation.DataHandler
                            */
-                           public  com.remmylife.diary.xsd.Diary getDiary(){
+                           public  javax.activation.DataHandler getDiary(){
                                return localDiary;
                            }
 
@@ -58,7 +58,7 @@
                                * Auto generated setter method
                                * @param param Diary
                                */
-                               public void setDiary(com.remmylife.diary.xsd.Diary param){
+                               public void setDiary(javax.activation.DataHandler param){
                             localDiaryTracker = true;
                                    
                                             this.localDiary=param;
@@ -126,18 +126,24 @@
                
                    }
                 if (localDiaryTracker){
-                                    if (localDiary==null){
-
-                                        writeStartElement(null, "http://service.remmylife.com", "diary", xmlWriter);
-
-                                       // write the nil attribute
-                                      writeAttribute("xsi","http://www.w3.org/2001/XMLSchema-instance","nil","1",xmlWriter);
-                                      xmlWriter.writeEndElement();
-                                    }else{
-                                     localDiary.serialize(new javax.xml.namespace.QName("http://service.remmylife.com","diary"),
-                                        xmlWriter);
+                                    namespace = "http://service.remmylife.com";
+                                    writeStartElement(null, namespace, "diary", xmlWriter);
+                             
+                                        
+                                    if (localDiary!=null)  {
+                                       try {
+                                           org.apache.axiom.util.stax.XMLStreamWriterUtils.writeDataHandler(xmlWriter, localDiary, null, true);
+                                       } catch (java.io.IOException ex) {
+                                           throw new javax.xml.stream.XMLStreamException("Unable to read data handler for diary", ex);
+                                       }
+                                    } else {
+                                         
+                                             writeAttribute("xsi","http://www.w3.org/2001/XMLSchema-instance","nil","1",xmlWriter);
+                                         
                                     }
-                                }
+                                 
+                                   xmlWriter.writeEndElement();
+                             }
                     xmlWriter.writeEndElement();
                
 
@@ -145,7 +151,7 @@
 
         private static java.lang.String generatePrefix(java.lang.String namespace) {
             if(namespace.equals("http://service.remmylife.com")){
-                return "ns2";
+                return "ns1";
             }
             return org.apache.axis2.databinding.utils.BeanUtil.getUniquePrefix();
         }
@@ -323,13 +329,11 @@
                  java.util.ArrayList attribList = new java.util.ArrayList();
 
                  if (localDiaryTracker){
-                            elementList.add(new javax.xml.namespace.QName("http://service.remmylife.com",
-                                                                      "diary"));
-                            
-                            
-                                    elementList.add(localDiary==null?null:
-                                    localDiary);
-                                }
+                                      elementList.add(new javax.xml.namespace.QName("http://service.remmylife.com",
+                                        "diary"));
+                                
+                            elementList.add(localDiary);
+                        }
 
                 return new org.apache.axis2.databinding.utils.reader.ADBXMLStreamReaderImpl(qName, elementList.toArray(), attribList.toArray());
             
@@ -383,7 +387,7 @@
                             if (!"saveDiary".equals(type)){
                                 //find namespace for the prefix
                                 java.lang.String nsUri = reader.getNamespaceContext().getNamespaceURI(nsPrefix);
-                                return (SaveDiary)com.remmylife.diary.xsd.ExtensionMapper.getTypeObject(
+                                return (SaveDiary)com.remmylife.service.ExtensionMapper.getTypeObject(
                                      nsUri,type,reader);
                               }
                         
@@ -410,19 +414,18 @@
                                 
                                     if (reader.isStartElement() && new javax.xml.namespace.QName("http://service.remmylife.com","diary").equals(reader.getName())){
                                 
-                                      nillableValue = reader.getAttributeValue("http://www.w3.org/2001/XMLSchema-instance","nil");
-                                      if ("true".equals(nillableValue) || "1".equals(nillableValue)){
-                                          object.setDiary(null);
-                                          reader.next();
-                                            
-                                            reader.next();
-                                          
-                                      }else{
+                                        nillableValue = reader.getAttributeValue("http://www.w3.org/2001/XMLSchema-instance","nil");
+                                        if ("true".equals(nillableValue) || "1".equals(nillableValue)){
+                                             object.setDiary(null);
+                                             reader.next();
+                                        } else {
                                     
-                                                object.setDiary(com.remmylife.diary.xsd.Diary.Factory.parse(reader));
-                                              
+                                            object.setDiary(org.apache.axiom.util.stax.XMLStreamReaderUtils.getDataHandlerFromElement(reader));
+                                    
+                                        }
+                                      
                                         reader.next();
-                                    }
+                                    
                               }  // End of if for expected property start element
                                 
                                     else {

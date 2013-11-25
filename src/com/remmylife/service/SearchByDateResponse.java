@@ -21,17 +21,16 @@
                 public static final javax.xml.namespace.QName MY_QNAME = new javax.xml.namespace.QName(
                 "http://service.remmylife.com",
                 "searchByDateResponse",
-                "ns2");
+                "ns1");
 
             
 
                         /**
                         * field for _return
-                        * This was an Array!
                         */
 
                         
-                                    protected com.remmylife.diary.xsd.Diary[] local_return ;
+                                    protected javax.activation.DataHandler local_return ;
                                 
                            /*  This tracker boolean wil be used to detect whether the user called the set method
                           *   for this attribute. It will be used to determine whether to include this field
@@ -47,63 +46,26 @@
 
                            /**
                            * Auto generated getter method
-                           * @return com.remmylife.diary.xsd.Diary[]
+                           * @return javax.activation.DataHandler
                            */
-                           public  com.remmylife.diary.xsd.Diary[] get_return(){
+                           public  javax.activation.DataHandler get_return(){
                                return local_return;
                            }
 
                            
                         
-
-
-                               
-                              /**
-                               * validate the array for _return
+                            /**
+                               * Auto generated setter method
+                               * @param param _return
                                */
-                              protected void validate_return(com.remmylife.diary.xsd.Diary[] param){
-                             
-                              }
+                               public void set_return(javax.activation.DataHandler param){
+                            local_returnTracker = true;
+                                   
+                                            this.local_return=param;
+                                    
 
-
-                             /**
-                              * Auto generated setter method
-                              * @param param _return
-                              */
-                              public void set_return(com.remmylife.diary.xsd.Diary[] param){
-                              
-                                   validate_return(param);
-
-                               local_returnTracker = true;
-                                      
-                                      this.local_return=param;
-                              }
-
-                               
-                             
-                             /**
-                             * Auto generated add method for the array for convenience
-                             * @param param com.remmylife.diary.xsd.Diary
-                             */
-                             public void add_return(com.remmylife.diary.xsd.Diary param){
-                                   if (local_return == null){
-                                   local_return = new com.remmylife.diary.xsd.Diary[]{};
-                                   }
-
+                               }
                             
-                                 //update the setting tracker
-                                local_returnTracker = true;
-                            
-
-                               java.util.List list =
-                            org.apache.axis2.databinding.utils.ConverterUtil.toList(local_return);
-                               list.add(param);
-                               this.local_return =
-                             (com.remmylife.diary.xsd.Diary[])list.toArray(
-                            new com.remmylife.diary.xsd.Diary[list.size()]);
-
-                             }
-                             
 
      
      
@@ -164,32 +126,24 @@
                
                    }
                 if (local_returnTracker){
-                                       if (local_return!=null){
-                                            for (int i = 0;i < local_return.length;i++){
-                                                if (local_return[i] != null){
-                                                 local_return[i].serialize(new javax.xml.namespace.QName("http://service.remmylife.com","return"),
-                                                           xmlWriter);
-                                                } else {
-                                                   
-                                                            writeStartElement(null, "http://service.remmylife.com", "return", xmlWriter);
-
-                                                           // write the nil attribute
-                                                           writeAttribute("xsi","http://www.w3.org/2001/XMLSchema-instance","nil","1",xmlWriter);
-                                                           xmlWriter.writeEndElement();
-                                                    
-                                                }
-
-                                            }
-                                     } else {
+                                    namespace = "http://service.remmylife.com";
+                                    writeStartElement(null, namespace, "return", xmlWriter);
+                             
                                         
-                                                writeStartElement(null, "http://service.remmylife.com", "return", xmlWriter);
-
-                                               // write the nil attribute
-                                               writeAttribute("xsi","http://www.w3.org/2001/XMLSchema-instance","nil","1",xmlWriter);
-                                               xmlWriter.writeEndElement();
-                                        
+                                    if (local_return!=null)  {
+                                       try {
+                                           org.apache.axiom.util.stax.XMLStreamWriterUtils.writeDataHandler(xmlWriter, local_return, null, true);
+                                       } catch (java.io.IOException ex) {
+                                           throw new javax.xml.stream.XMLStreamException("Unable to read data handler for return", ex);
+                                       }
+                                    } else {
+                                         
+                                             writeAttribute("xsi","http://www.w3.org/2001/XMLSchema-instance","nil","1",xmlWriter);
+                                         
                                     }
-                                 }
+                                 
+                                   xmlWriter.writeEndElement();
+                             }
                     xmlWriter.writeEndElement();
                
 
@@ -197,7 +151,7 @@
 
         private static java.lang.String generatePrefix(java.lang.String namespace) {
             if(namespace.equals("http://service.remmylife.com")){
-                return "ns2";
+                return "ns1";
             }
             return org.apache.axis2.databinding.utils.BeanUtil.getUniquePrefix();
         }
@@ -375,30 +329,10 @@
                  java.util.ArrayList attribList = new java.util.ArrayList();
 
                  if (local_returnTracker){
-                             if (local_return!=null) {
-                                 for (int i = 0;i < local_return.length;i++){
-
-                                    if (local_return[i] != null){
-                                         elementList.add(new javax.xml.namespace.QName("http://service.remmylife.com",
-                                                                          "return"));
-                                         elementList.add(local_return[i]);
-                                    } else {
-                                        
-                                                elementList.add(new javax.xml.namespace.QName("http://service.remmylife.com",
-                                                                          "return"));
-                                                elementList.add(null);
-                                            
-                                    }
-
-                                 }
-                             } else {
-                                 
-                                        elementList.add(new javax.xml.namespace.QName("http://service.remmylife.com",
-                                                                          "return"));
-                                        elementList.add(local_return);
-                                    
-                             }
-
+                                      elementList.add(new javax.xml.namespace.QName("http://service.remmylife.com",
+                                        "return"));
+                                
+                            elementList.add(local_return);
                         }
 
                 return new org.apache.axis2.databinding.utils.reader.ADBXMLStreamReaderImpl(qName, elementList.toArray(), attribList.toArray());
@@ -453,7 +387,7 @@
                             if (!"searchByDateResponse".equals(type)){
                                 //find namespace for the prefix
                                 java.lang.String nsUri = reader.getNamespaceContext().getNamespaceURI(nsPrefix);
-                                return (SearchByDateResponse)com.remmylife.diary.xsd.ExtensionMapper.getTypeObject(
+                                return (SearchByDateResponse)com.remmylife.service.ExtensionMapper.getTypeObject(
                                      nsUri,type,reader);
                               }
                         
@@ -475,60 +409,23 @@
                     
                     reader.next();
                 
-                        java.util.ArrayList list1 = new java.util.ArrayList();
-                    
                                     
                                     while (!reader.isStartElement() && !reader.isEndElement()) reader.next();
                                 
                                     if (reader.isStartElement() && new javax.xml.namespace.QName("http://service.remmylife.com","return").equals(reader.getName())){
                                 
+                                        nillableValue = reader.getAttributeValue("http://www.w3.org/2001/XMLSchema-instance","nil");
+                                        if ("true".equals(nillableValue) || "1".equals(nillableValue)){
+                                             object.set_return(null);
+                                             reader.next();
+                                        } else {
                                     
+                                            object.set_return(org.apache.axiom.util.stax.XMLStreamReaderUtils.getDataHandlerFromElement(reader));
                                     
-                                    // Process the array and step past its final element's end.
+                                        }
+                                      
+                                        reader.next();
                                     
-                                                          nillableValue = reader.getAttributeValue("http://www.w3.org/2001/XMLSchema-instance","nil");
-                                                          if ("true".equals(nillableValue) || "1".equals(nillableValue)){
-                                                              list1.add(null);
-                                                              reader.next();
-                                                          } else {
-                                                        list1.add(com.remmylife.diary.xsd.Diary.Factory.parse(reader));
-                                                                }
-                                                        //loop until we find a start element that is not part of this array
-                                                        boolean loopDone1 = false;
-                                                        while(!loopDone1){
-                                                            // We should be at the end element, but make sure
-                                                            while (!reader.isEndElement())
-                                                                reader.next();
-                                                            // Step out of this element
-                                                            reader.next();
-                                                            // Step to next element event.
-                                                            while (!reader.isStartElement() && !reader.isEndElement())
-                                                                reader.next();
-                                                            if (reader.isEndElement()){
-                                                                //two continuous end elements means we are exiting the xml structure
-                                                                loopDone1 = true;
-                                                            } else {
-                                                                if (new javax.xml.namespace.QName("http://service.remmylife.com","return").equals(reader.getName())){
-                                                                    
-                                                                      nillableValue = reader.getAttributeValue("http://www.w3.org/2001/XMLSchema-instance","nil");
-                                                                      if ("true".equals(nillableValue) || "1".equals(nillableValue)){
-                                                                          list1.add(null);
-                                                                          reader.next();
-                                                                      } else {
-                                                                    list1.add(com.remmylife.diary.xsd.Diary.Factory.parse(reader));
-                                                                        }
-                                                                }else{
-                                                                    loopDone1 = true;
-                                                                }
-                                                            }
-                                                        }
-                                                        // call the converter utility  to convert and set the array
-                                                        
-                                                        object.set_return((com.remmylife.diary.xsd.Diary[])
-                                                            org.apache.axis2.databinding.utils.ConverterUtil.convertToArray(
-                                                                com.remmylife.diary.xsd.Diary.class,
-                                                                list1));
-                                                            
                               }  // End of if for expected property start element
                                 
                                     else {
